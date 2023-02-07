@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login</title>
+</head>
+<body>
+  <div class="container">
+    <h1>User Login</h1>
+    <label>
+      Username:
+        <br>
+        <input type="text" id="Username" name="Username">
+    </label>
+    <br>
+    <label>
+        Password:
+        <br>
+        <input type="text" id="Password" name="Password">
+    </label>
+    <br>
+    <button type="button" onclick="login()">Login</button>
+    <button type="button" onclick="cancle()">Clear</button>
+    <div id="sms"></div>
+    <script type="text/javascript">
+      // arrays of user names and passwords
+      var usernames=["admin","author","guest"];
+      var passwords=["321","abc","xyz"];
+      // user name is : admin
+      //password is: 123
+      function login(){
+        // get user name from user input
+        var username=document.getElementById("Username").value;
+        //get password from user input
+        var password=document.getElementById("Password").value;
+        //a variable to store error message
+        var sms="";
+        //loop through the usernames
+        for (var i=0;i<usernames.length;i++){
+          if (username==usernames[i]){
+            if(password==passwords[i]){
+              //redirect user to google.com
+              location.href="https://www.google.com";
+              break;
+            }
+            else{
+              sms="Invalid password!";
+            }
+          }else{
+            sms="Invidial username!"
+          }
+        }
+        document.getElementById("sms").innerHTML=sms;
+      }
+      //clear the form when user hit on clear button
+      function cancle(){
+        document.getElementById("txt1").value="";
+        document.getElementById("txt2").value="";
+        document.getElementById("txt1").focus();
+
+      }
+
+
+
+    </script>
+
+</body>
+</html>

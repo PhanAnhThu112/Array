@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arraytest</title>
+    <style>
+
+        .container{
+            background-color: #528B8B;
+            width:740px;
+            height: auto;
+            padding: auto;
+
+        }
+        button{
+            margin-left:5px;
+            color: red;
+        }
+        label{
+            margin-left:5px ;
+        }
+        input{
+            width: 30%;
+            margin-left:5px;
+            border-radius: 2px;
+
+        }
+        table{
+            width: 600px;
+            border-spacing: 0;
+            border-bottom:0;
+            border:2px solid black ;
+            border-bottom:none ;
+            border-right:none ;
+            margin-top: 10px;
+            margin-left: 5px;
+        }
+        #tbl tr{
+            height: 27px;
+            background-color: aqua;
+        }
+        #tbl tr th, #tbl tr td{
+            text-align: center;
+        }
+        #tbl tr th,#tbl tr{
+            border-top: none;
+            border-right: 2px solid black;
+            border-bottom:2px solid black ;
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <form id="frm">
+        <label>
+          Fullname_Customer
+            <br>
+            <input type="text" id="fullname" name="fullname">
+        </label>
+        <br>
+        <label>
+            Id_Pro
+            <br>
+            <input type="text" id="id" name="id">
+        </label>
+        <br>
+        <label>
+            Name_Pro
+            <br>
+            <input type="text" id="name" id="name">
+        </label>
+        <br>
+        <label>
+            Quantity_Pro
+            <br>
+            <input type="text" id="quantity" name="quantity">
+        </label>
+        <br>
+        <label>
+            Price_Pro
+            <br>
+            <input type="text" id="price" name="price">
+        </label>
+        <br>
+        <br>
+        <button type="button" onclick="save()">Save</button>
+        <button type="button" onclick="show()">Show</button>
+        <button type="button" onclick="reset()">Reset</button>
+    </form>
+    <table id="tbl">
+        <tr>
+            <th>Auto_Increment</th>
+            <th>Fullname_Customer</th>
+            <th>Id_Pro</th>
+            <th>Name_Pro</th>
+            <th>Quantity_Pro</th>
+            <th>Price_Pro</th>
+            <th>Discount</th>
+            <th>Amount</th>
+            <th>Total</th>
+        </tr>
+    </table>
+    <script>
+        var arrays=[];
+        function save(){
+            var a={
+                fname: document.getElementById("fullname").value,
+                id: document.getElementById("id").value,
+                name: document.getElementById("name").value,
+                quantity: document.getElementById("quantity").value,
+                price: document.getElementById("price").value,
+            }
+            console.log(a);
+            arrays.push(a);
+        }
+        function show(){
+            for ( i in arrays){
+                var n = i;
+                var discount="10";
+                var amount="5000";
+                n++;
+                var data = "<tr>";
+                data += "<th>" + n + "</th>";
+                data += "<th>" + arrays[i].fname + "</th>";
+                data += "<th>" + arrays[i].id + "</th>";
+                data += "<th>" + arrays[i].name + "</th>";
+                data += "<th>" + arrays[i].quantity + "</th>";
+                data += "<th>" + arrays[i].price + "</th>";
+                data += "<th>" + discount + "%</th>";
+                data += "<th>" + amount + "</th>";
+                data += "<th>" + ((arrays[i].quantity*arrays[i].price)*(1- parseInt(discount)/100)) + "</th>";
+                data +="</tr>";
+            }
+            document.getElementById("tbl").innerHTML +=data;
+        }
+        function reset(){
+            document.getElementById("fullname").innerHTML="";
+            document.getElementById("id").innerHTML="";
+            document.getElementById("name").innerHTML="";
+            document.getElementById("quantity").innerHTML="";
+            document.getElementById("price").innerHTML="";
+        }
+    </script>
+  </div>
+
+</body>
+</html>
